@@ -41,11 +41,11 @@
 
         /* --- STYLE CHO LOGO BARCA --- */
         .fcb-logo {
-            width: clamp(80px, 15vw, 110px); /* Tự động to nhỏ theo màn hình */
+            width: clamp(80px, 15vw, 110px);
             height: auto;
             margin-bottom: 10px;
-            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.8)); /* Đổ bóng cho logo nổi lên */
-            animation: float 3s ease-in-out infinite; /* Hiệu ứng nổi nhẹ */
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.8));
+            animation: float 3s ease-in-out infinite; 
         }
 
         @keyframes float {
@@ -54,7 +54,7 @@
             100% { transform: translateY(0px); }
         }
 
-        /* TIÊU ĐỀ (Đã sửa lỗi mất dấu) */
+        /* TIÊU ĐỀ */
         h1 {
             font-size: 3.5rem;
             font-weight: 800;
@@ -66,8 +66,7 @@
             margin-bottom: 5px;
             text-shadow: 0 4px 30px rgba(165, 0, 68, 0.4);
             text-align: center;
-            /* FIX LỖI MẤT DẤU Ở ĐÂY */
-            padding-top: 15px; /* Tạo không gian cho dấu sắc của chữ Ế */
+            padding-top: 15px; /* FIX LỖI MẤT DẤU */
             line-height: 1.2;
         }
 
@@ -185,29 +184,89 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const endDate = new Date('June 30, 2027 23:59:59').getTime();
-            const startDate = new Date('January 1, 2022 00:00:00').getTime();
-            const contractTotalMs = endDate - startDate;
-            
-            const grossSalary = 10000000; 
-            const netSalary = 4800000;    
-            let currentAnnualSalary = grossSalary;
-            
-            const daysInYear = 365.25;
-            const rateVND = 27500; 
+        const endDate = new Date('June 30, 2027 23:59:59').getTime();
+        const startDate = new Date('January 1, 2022 00:00:00').getTime();
+        const contractTotalMs = endDate - startDate;
+        
+        const grossSalary = 10000000; 
+        const netSalary = 4800000;    
+        let currentAnnualSalary = grossSalary;
+        
+        const daysInYear = 365.25;
+        const rateVND = 27500; 
 
-            const btnGross = document.getElementById('btn-gross');
-            const btnNet = document.getElementById('btn-net');
-            const salaryTitle = document.getElementById('salary-title');
+        const btnGross = document.getElementById('btn-gross');
+        const btnNet = document.getElementById('btn-net');
+        const salaryTitle = document.getElementById('salary-title');
 
-            const fmtNum = (num, decimals = 0) => num.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+        const fmtNum = (num, decimals = 0) => num.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
 
-            function updateBreakdown() {
-                document.getElementById('bd-year').textContent = fmtNum(currentAnnualSalary);
-                document.getElementById('bd-month').textContent = fmtNum(currentAnnualSalary / 12);
-                document.getElementById('bd-week').textContent = fmtNum(currentAnnualSalary / 52.1429);
-                document.getElementById('bd-day').textContent = fmtNum(currentAnnualSalary / daysInYear);
-                document.getElementById('bd-hour').textContent = fmtNum(currentAnnualSalary / (daysInYear * 24));
-                document.getElementById('bd-minute').textContent = fmtNum(currentAnnualSalary / (daysInYear * 24 * 60), 2);
-                document
+        function updateBreakdown() {
+            document.getElementById('bd-year').textContent = fmtNum(currentAnnualSalary);
+            document.getElementById('bd-month').textContent = fmtNum(currentAnnualSalary / 12);
+            document.getElementById('bd-week').textContent = fmtNum(currentAnnualSalary / 52.1429);
+            document.getElementById('bd-day').textContent = fmtNum(currentAnnualSalary / daysInYear);
+            document.getElementById('bd-hour').textContent = fmtNum(currentAnnualSalary / (daysInYear * 24));
+            document.getElementById('bd-minute').textContent = fmtNum(currentAnnualSalary / (daysInYear * 24 * 60), 2);
+            document.getElementById('bd-second').textContent = fmtNum(currentAnnualSalary / (daysInYear * 24 * 60 * 60), 2);
+        }
+
+        btnGross.addEventListener('click', () => {
+            currentAnnualSalary = grossSalary; btnGross.classList.add('active'); btnNet.classList.remove('active');
+            salaryTitle.textContent = "Tổng tiền Barca đã mất"; updateBreakdown();
+        });
+
+        btnNet.addEventListener('click', () => {
+            currentAnnualSalary = netSalary; btnNet.classList.add('active'); btnGross.classList.remove('active');
+            salaryTitle.textContent = "Tổng tiền Ferran đút túi"; updateBreakdown();
+        });
+
+        updateBreakdown();
+
+        const trollBtn = document.getElementById('troll-btn');
+        trollBtn.addEventListener('mouseover', () => {
+            const maxX = window.innerWidth / 2 - 80;
+            const x = (Math.random() > 0.5 ? 1 : -1) * (Math.random() * maxX); 
+            const y = (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 30);   
+            trollBtn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        trollBtn.addEventListener('click', () => {
+            alert("Lỗi hệ thống: Joan Laporta không cho phép thao tác này!");
+        });
+
+        function update() {
+            const now = new Date().getTime();
+            const distance = endDate - now;
+            const timeElapsedMs = now - startDate;
+
+            if (distance > 0) {
+                document.getElementById('days').textContent = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                document.getElementById('hours').textContent = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+            } else {
+                document.getElementById('days').textContent = "00"; document.getElementById('hours').textContent = "00";
+                document.getElementById('minutes').textContent = "00"; document.getElementById('seconds').textContent = "00";
+            }
+
+            if (timeElapsedMs > 0) {
+                const salaryPerMs = currentAnnualSalary / (daysInYear * 24 * 60 * 60 * 1000);
+                const currentTotalEarned = timeElapsedMs * salaryPerMs;
+                
+                document.getElementById('salary').textContent = fmtNum(currentTotalEarned, 2);
+                document.getElementById('salary-vnd').textContent = `~ ${(currentTotalEarned * rateVND).toLocaleString('en-US', {maximumFractionDigits: 0})}`;
+
+                let percent = (timeElapsedMs / contractTotalMs) * 100;
+                if (percent > 100) percent = 100;
+                document.getElementById('progress-fill').style.width = percent + '%';
+                document.getElementById('progress-text').textContent = `Tiến độ chịu đựng: ${percent.toFixed(5)}%`;
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        // Bật ngay vòng lặp đếm số
+        requestAnimationFrame(update);
+    </script>
+</body>
+</html>
