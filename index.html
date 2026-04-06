@@ -10,8 +10,8 @@
             --barca-blue: #004d98;
             --barca-red: #a50044;
             --neon-green: #00ff88;
-            --card-bg: #111520; /* Nền khối đậm màu, nổi bật */
-            --card-border: #2a3040; /* Viền khối rõ ràng */
+            --card-bg: #111520;
+            --card-border: #2a3040;
             --text-muted: #8c9baf;
         }
 
@@ -39,9 +39,9 @@
             filter: grayscale(90%) contrast(150%);
         }
 
-        /* --- PHẦN TIÊU ĐỀ --- */
+        /* TIÊU ĐỀ */
         h1 {
-            font-size: clamp(2.2rem, 6vw, 3.5rem);
+            font-size: 3.5rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -56,14 +56,14 @@
         .subtitle {
             color: var(--text-muted);
             margin-bottom: 30px;
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-align: center;
             font-weight: 600;
         }
 
-        /* --- NÚT ĐỔI LƯƠNG --- */
+        /* NÚT BẤM */
         .toggle-container {
             background: #0a0d14;
             padding: 6px;
@@ -75,18 +75,18 @@
         }
 
         .toggle-btn {
-            background: transparent; border: none; color: var(--text-muted); padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s; font-size: clamp(0.85rem, 2.5vw, 1rem);
+            background: transparent; border: none; color: var(--text-muted); padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s; font-size: 1rem;
         }
         .toggle-btn.active { background: var(--barca-red); color: #fff; box-shadow: 0 0 20px rgba(165, 0, 68, 0.6); }
 
-        /* --- KHỐI TỔNG LƯƠNG CHÍNH --- */
+        /* KHỐI LƯƠNG CHÍNH */
         .main-salary-card {
             background: linear-gradient(145deg, #161b2a, #0d101a);
             border: 1px solid var(--card-border);
             border-top: 4px solid var(--barca-blue);
             border-bottom: 4px solid var(--barca-red);
             border-radius: 24px;
-            padding: clamp(25px, 6vw, 40px);
+            padding: 40px;
             width: 100%;
             max-width: 800px;
             text-align: center;
@@ -94,22 +94,20 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.8);
         }
 
-        .salary-title { color: #a4b4cb; font-size: clamp(1rem, 3vw, 1.3rem); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; font-weight: 600; }
+        .salary-title { color: #a4b4cb; font-size: 1.3rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; font-weight: 600; }
         
-        /* CHỐNG NHÁY CHỮ TUYỆT ĐỐI */
         .number-font {
             font-family: 'Teko', sans-serif;
-            font-feature-settings: "tnum" 1, "kern" 0; /* Ép chế độ Tabular */
             font-variant-numeric: tabular-nums;
             letter-spacing: 1px;
         }
 
-        .salary-val { font-size: clamp(3.5rem, 10vw, 7rem); color: var(--neon-green); line-height: 1; text-shadow: 0 0 40px rgba(0, 255, 136, 0.3); display: flex; justify-content: center; align-items: baseline; gap: 5px;}
-        .salary-vnd { font-size: clamp(2rem, 6vw, 3rem); color: #ffcc00; margin-top: 15px; opacity: 0.95; display: flex; justify-content: center; align-items: baseline; gap: 10px;}
+        .salary-val { font-size: 6rem; color: var(--neon-green); line-height: 1; text-shadow: 0 0 40px rgba(0, 255, 136, 0.3); display: flex; justify-content: center; align-items: baseline; gap: 5px;}
+        .salary-vnd { font-size: 2.8rem; color: #ffcc00; margin-top: 15px; opacity: 0.95; display: flex; justify-content: center; align-items: baseline; gap: 10px;}
 
-        .currency-symbol { font-size: 0.7em; opacity: 0.8; font-family: 'Inter', sans-serif; font-weight: bold;}
+        .currency-symbol { font-size: 0.6em; opacity: 0.8; font-family: 'Inter', sans-serif; font-weight: bold;}
 
-        /* --- KHỐI ĐẾM NGƯỢC THỜI GIAN --- */
+        /* ĐẾM THỜI GIAN */
         .countdown-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -128,7 +126,177 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
 
-        .time-val { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; color: #fff; }
-        .time-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-top: 5px; font-weight: 600; }
+        .time-val { font-size: 3.5rem; line-height: 1; color: #fff; }
+        .time-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-top: 5px; font-weight: 600; }
 
-        /* --- BẢNG ĐÓNG KHỐI PHÂN RÃ THÔNG TIN
+        /* BẢNG PHÂN RÃ */
+        .breakdown-grid {
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 15px; 
+            width: 100%; 
+            max-width: 800px; 
+            margin-bottom: 40px;
+        }
+
+        .breakdown-card { 
+            background: linear-gradient(135deg, #161b2a, #0d101a);
+            border: 1px solid var(--card-border); 
+            border-top: 3px solid var(--barca-blue); 
+            border-radius: 16px; 
+            padding: 20px 15px; 
+            text-align: center; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
+        
+        .breakdown-card:nth-child(even) { border-top-color: var(--barca-red); }
+
+        .bd-label { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; font-weight: bold; }
+        .bd-val { font-size: 2.2rem; color: #ffffff; }
+
+        .highlight-card {
+            grid-column: 1 / -1; 
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), #0d101a); 
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-top: 4px solid var(--neon-green);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
+        }
+        .highlight-card .bd-label { color: var(--neon-green); font-size: 1rem; }
+        .highlight-card .bd-val { color: var(--neon-green); font-size: 3.5rem; text-shadow: 0 0 20px rgba(0,255,136,0.5); }
+
+        /* THANH TIẾN TRÌNH */
+        .progress-wrapper { width: 100%; max-width: 800px; margin-bottom: 40px; }
+        .progress-bar-container { background: #0a0d14; border: 1px solid var(--card-border); border-radius: 12px; height: 18px; overflow: hidden; box-shadow: inset 0 2px 10px rgba(0,0,0,0.8); }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--barca-blue), var(--barca-red)); width: 0%; box-shadow: 0 0 10px rgba(165, 0, 68, 0.5); }
+        .progress-text { font-size: 0.9rem; color: var(--text-muted); margin-top: 12px; text-align: center; font-weight: 600; }
+
+        /* NÚT TROLL */
+        .troll-btn-container { position: relative; width: 100%; height: 80px; display: flex; justify-content: center; align-items: center; overflow: visible;}
+        .troll-btn { background: linear-gradient(90deg, #ff0000, #cc0000); color: white; border: 1px solid #ff4d4d; padding: 15px 30px; font-size: 1.1rem; font-weight: 800; border-radius: 12px; cursor: pointer; text-transform: uppercase; box-shadow: 0 10px 20px rgba(255,0,0,0.4); transition: transform 0.15s ease-out; position: absolute; z-index: 10;}
+
+        /* --- TỐI ƯU MÀN HÌNH ĐIỆN THOẠI (SAFE MODE) --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .subtitle { font-size: 0.9rem; }
+            .main-salary-card { padding: 25px 15px; border-width: 3px; }
+            .salary-title { font-size: 1rem; }
+            .salary-val { font-size: 3.5rem; }
+            .salary-vnd { font-size: 2rem; }
+            .countdown-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .time-val { font-size: 2.5rem; }
+            .breakdown-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .bd-val { font-size: 1.8rem; }
+            .highlight-card .bd-val { font-size: 3rem; }
+            .toggle-btn { font-size: 0.85rem; padding: 10px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-img"></div>
+    
+    <h1>Đếm Ngược Ferran Torres</h1>
+    <div class="subtitle">Đếm từng giây đến khi hợp đồng kết thúc</div>
+
+    <div class="toggle-container">
+        <button class="toggle-btn active" id="btn-gross">Barca Trả (Gross)</button>
+        <button class="toggle-btn" id="btn-net">Torres Nhận (Net)</button>
+    </div>
+
+    <div class="main-salary-card">
+        <div class="salary-title" id="salary-title">Tổng tiền Barca đã mất</div>
+        <div class="salary-val"><span class="currency-symbol">€</span><span id="salary" class="number-font">0.00</span></div>
+        <div class="salary-vnd"><span id="salary-vnd" class="number-font">0</span><span class="currency-symbol">VNĐ</span></div>
+    </div>
+
+    <div class="countdown-container">
+        <div class="time-box"><span class="time-val number-font" id="days">00</span><span class="time-label">Ngày</span></div>
+        <div class="time-box"><span class="time-val number-font" id="hours">00</span><span class="time-label">Giờ</span></div>
+        <div class="time-box"><span class="time-val number-font" id="minutes">00</span><span class="time-label">Phút</span></div>
+        <div class="time-box"><span class="time-val number-font" id="seconds">00</span><span class="time-label">Giây</span></div>
+    </div>
+
+    <div class="breakdown-grid">
+        <div class="breakdown-card"><div class="bd-label">Mỗi Năm</div><div class="bd-val number-font"><span class="currency-symbol">€</span> <span id="bd-year">0</span></div></div>
+        <div class="breakdown-card"><div class="bd-label">Mỗi Tháng</div><div class="bd-val number-font"><span class="currency-symbol">€</span> <span id="bd-month">0</span></div></div>
+        <div class="breakdown-card"><div class="bd-label">Mỗi Tuần</div><div class="bd-val number-font"><span class="currency-symbol">€</span> <span id="bd-week">0</span></div></div>
+        <div class="breakdown-card"><div class="bd-label">Mỗi Ngày</div><div class="bd-val number-font"><span class="currency-symbol">€</span> <span id="bd-day">0</span></div></div>
+        <div class="breakdown-card"><div class="bd-label">Mỗi Giờ</div><div class="bd-val number-font"><span class="currency-symbol">€</span> <span id="bd-hour">0</span></div></div>
+        <div class="breakdown-card"><div class="bd-label">Mỗi Phút</div><div class="bd-val number-font"><span class="currency-symbol">€</span> <span id="bd-minute">0</span></div></div>
+        <div class="breakdown-card highlight-card">
+            <div class="bd-label">Mỗi Giây</div>
+            <div class="bd-val number-font"><span class="currency-symbol" style="color:#00ff88;">€</span> <span id="bd-second">0</span></div>
+        </div>
+    </div>
+
+    <div class="progress-wrapper">
+        <div class="progress-bar-container"><div class="progress-fill" id="progress-fill"></div></div>
+        <div class="progress-text number-font" id="progress-text">Tiến độ chịu đựng: 0.00000%</div>
+    </div>
+
+    <div class="troll-btn-container">
+        <button class="troll-btn" id="troll-btn">Hủy Hợp Đồng Ngay!</button>
+    </div>
+
+    <script>
+        // Sử dụng lệnh chờ để đảm bảo trình duyệt tải xong mới chạy Javascript (An toàn tuyệt đối)
+        document.addEventListener('DOMContentLoaded', function() {
+            const endDate = new Date('June 30, 2027 23:59:59').getTime();
+            const startDate = new Date('January 1, 2022 00:00:00').getTime();
+            const contractTotalMs = endDate - startDate;
+            
+            const grossSalary = 10000000; 
+            const netSalary = 4800000;    
+            let currentAnnualSalary = grossSalary;
+            
+            const daysInYear = 365.25;
+            const rateVND = 27500; 
+
+            const btnGross = document.getElementById('btn-gross');
+            const btnNet = document.getElementById('btn-net');
+            const salaryTitle = document.getElementById('salary-title');
+
+            const fmtNum = (num, decimals = 0) => num.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+
+            function updateBreakdown() {
+                document.getElementById('bd-year').textContent = fmtNum(currentAnnualSalary);
+                document.getElementById('bd-month').textContent = fmtNum(currentAnnualSalary / 12);
+                document.getElementById('bd-week').textContent = fmtNum(currentAnnualSalary / 52.1429);
+                document.getElementById('bd-day').textContent = fmtNum(currentAnnualSalary / daysInYear);
+                document.getElementById('bd-hour').textContent = fmtNum(currentAnnualSalary / (daysInYear * 24));
+                document.getElementById('bd-minute').textContent = fmtNum(currentAnnualSalary / (daysInYear * 24 * 60), 2);
+                document.getElementById('bd-second').textContent = fmtNum(currentAnnualSalary / (daysInYear * 24 * 60 * 60), 2);
+            }
+
+            btnGross.addEventListener('click', () => {
+                currentAnnualSalary = grossSalary; btnGross.classList.add('active'); btnNet.classList.remove('active');
+                salaryTitle.textContent = "Tổng tiền Barca đã mất"; updateBreakdown();
+            });
+
+            btnNet.addEventListener('click', () => {
+                currentAnnualSalary = netSalary; btnNet.classList.add('active'); btnGross.classList.remove('active');
+                salaryTitle.textContent = "Tổng tiền Ferran đút túi"; updateBreakdown();
+            });
+
+            updateBreakdown();
+
+            const trollBtn = document.getElementById('troll-btn');
+            trollBtn.addEventListener('mouseover', () => {
+                const maxX = window.innerWidth / 2 - 80;
+                const x = (Math.random() > 0.5 ? 1 : -1) * (Math.random() * maxX); 
+                const y = (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 30);   
+                trollBtn.style.transform = `translate(${x}px, ${y}px)`;
+            });
+            trollBtn.addEventListener('click', () => {
+                alert("Lỗi hệ thống: Joan Laporta không cho phép thao tác này!");
+            });
+
+            function update() {
+                const now = new Date().getTime();
+                const distance = endDate - now;
+                const timeElapsedMs = now - startDate;
+
+                if (distance > 0) {
+                    document.getElementById('days').textContent = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                    document.getElementById('hours').textContent = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                    document.getElementById('minutes').textContent = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                    document.getElementById('seconds').textContent = String(Math.floor((
