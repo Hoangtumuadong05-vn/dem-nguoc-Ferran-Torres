@@ -10,14 +10,15 @@
             --barca-blue: #004d98;
             --barca-red: #a50044;
             --neon-green: #00ff88;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --card-bg: #111520; /* Nền khối đậm màu, nổi bật */
+            --card-border: #2a3040; /* Viền khối rõ ràng */
+            --text-muted: #8c9baf;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            background: #050505;
+            background: #050608;
             color: #ffffff;
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
@@ -33,237 +34,101 @@
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: url('https://upload.wikimedia.org/wikipedia/commons/4/4b/Ferran_Torres_2023_%28cropped%29.jpg') center top/cover no-repeat;
-            opacity: 0.15; 
+            opacity: 0.12; 
             z-index: -1;
-            filter: grayscale(80%) contrast(120%);
+            filter: grayscale(90%) contrast(150%);
         }
 
-        /* Tối ưu chữ co giãn mượt mà trên mọi thiết bị */
+        /* --- PHẦN TIÊU ĐỀ --- */
         h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: clamp(2.2rem, 6vw, 3.5rem);
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
-            background: linear-gradient(90deg, var(--barca-blue), var(--barca-red));
+            background: linear-gradient(90deg, var(--barca-blue) 0%, #d8005a 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-            text-shadow: 0 4px 20px rgba(165, 0, 68, 0.3);
+            margin-bottom: 5px;
+            text-shadow: 0 4px 30px rgba(165, 0, 68, 0.4);
             text-align: center;
         }
 
         .subtitle {
-            color: #888;
+            color: var(--text-muted);
             margin-bottom: 30px;
             font-size: clamp(0.9rem, 3vw, 1.1rem);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-align: center;
+            font-weight: 600;
         }
 
+        /* --- NÚT ĐỔI LƯƠNG --- */
         .toggle-container {
-            background: rgba(0,0,0,0.5);
-            padding: 5px;
+            background: #0a0d14;
+            padding: 6px;
             border-radius: 30px;
             display: inline-flex;
             margin-bottom: 30px;
-            border: 1px solid var(--glass-border);
-            max-width: 100%;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
         .toggle-btn {
-            background: transparent; border: none; color: #888; padding: 10px 20px; border-radius: 25px; cursor: pointer; font-weight: 600; transition: 0.3s; font-size: clamp(0.8rem, 2.5vw, 1rem);
+            background: transparent; border: none; color: var(--text-muted); padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s; font-size: clamp(0.85rem, 2.5vw, 1rem);
         }
-        .toggle-btn.active { background: var(--barca-red); color: #fff; box-shadow: 0 0 15px rgba(165, 0, 68, 0.5); }
+        .toggle-btn.active { background: var(--barca-red); color: #fff; box-shadow: 0 0 20px rgba(165, 0, 68, 0.6); }
 
+        /* --- KHỐI TỔNG LƯƠNG CHÍNH --- */
         .main-salary-card {
-            background: rgba(10, 15, 30, 0.7); border: 1px solid var(--glass-border); border-top: 3px solid var(--barca-blue); border-bottom: 3px solid var(--barca-red); border-radius: 20px; padding: clamp(20px, 5vw, 40px); width: 100%; max-width: 800px; text-align: center; backdrop-filter: blur(15px); margin-bottom: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        }
-
-        .salary-title { color: #aaa; font-size: clamp(0.9rem, 3vw, 1.2rem); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
-        
-        /* CHỐNG RUNG CHỮ: font-variant-numeric: tabular-nums */
-        .salary-val, .salary-vnd, .time-val, .bd-val {
-            font-family: 'Teko', sans-serif;
-            font-variant-numeric: tabular-nums; /* Giữ các số có độ rộng bằng nhau tuyệt đối */
-        }
-
-        .salary-val { font-size: clamp(3.5rem, 10vw, 6.5rem); color: var(--neon-green); line-height: 1; text-shadow: 0 0 30px rgba(0, 255, 136, 0.4); }
-        .salary-vnd { font-size: clamp(2rem, 6vw, 2.8rem); color: #ffcc00; margin-top: 15px; opacity: 0.95; letter-spacing: 1px; }
-
-        .countdown-container {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
+            background: linear-gradient(145deg, #161b2a, #0d101a);
+            border: 1px solid var(--card-border);
+            border-top: 4px solid var(--barca-blue);
+            border-bottom: 4px solid var(--barca-red);
+            border-radius: 24px;
+            padding: clamp(25px, 6vw, 40px);
             width: 100%;
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 35px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+        }
+
+        .salary-title { color: #a4b4cb; font-size: clamp(1rem, 3vw, 1.3rem); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; font-weight: 600; }
+        
+        /* CHỐNG NHÁY CHỮ TUYỆT ĐỐI */
+        .number-font {
+            font-family: 'Teko', sans-serif;
+            font-feature-settings: "tnum" 1, "kern" 0; /* Ép chế độ Tabular */
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 1px;
+        }
+
+        .salary-val { font-size: clamp(3.5rem, 10vw, 7rem); color: var(--neon-green); line-height: 1; text-shadow: 0 0 40px rgba(0, 255, 136, 0.3); display: flex; justify-content: center; align-items: baseline; gap: 5px;}
+        .salary-vnd { font-size: clamp(2rem, 6vw, 3rem); color: #ffcc00; margin-top: 15px; opacity: 0.95; display: flex; justify-content: center; align-items: baseline; gap: 10px;}
+
+        .currency-symbol { font-size: 0.7em; opacity: 0.8; font-family: 'Inter', sans-serif; font-weight: bold;}
+
+        /* --- KHỐI ĐẾM NGƯỢC THỜI GIAN --- */
+        .countdown-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 800px;
         }
 
         .time-box {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-radius: 16px;
-            padding: 15px;
-            min-width: clamp(70px, 20vw, 100px);
-            backdrop-filter: blur(12px);
+            padding: 15px 10px;
             text-align: center;
-            flex: 1 1 auto;
-            max-width: 120px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
 
-        .time-val { font-size: clamp(2.5rem, 8vw, 4rem); line-height: 1; color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.2); }
-        .time-label { font-size: 0.75rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; display: block; margin-top: 5px; }
+        .time-val { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1; color: #fff; }
+        .time-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; display: block; margin-top: 5px; font-weight: 600; }
 
-        .breakdown-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; width: 100%; max-width: 800px; margin-bottom: 40px;
-        }
-
-        .breakdown-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 15px; text-align: center; backdrop-filter: blur(10px); }
-        .bd-label { color: #888; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
-        .bd-val { font-size: clamp(1.8rem, 5vw, 2.2rem); color: #fff; letter-spacing: 1px; }
-
-        .progress-wrapper { width: 100%; max-width: 800px; margin-bottom: 40px; }
-        .progress-bar-container { background: #111; border-radius: 10px; height: 15px; overflow: hidden; box-shadow: inset 0 2px 5px rgba(0,0,0,0.8); }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--barca-blue), var(--barca-red)); width: 0%; }
-        .progress-text { font-size: 0.85rem; color: #888; margin-top: 10px; text-align: center; font-variant-numeric: tabular-nums; }
-
-        .troll-btn-container { position: relative; width: 100%; height: 80px; display: flex; justify-content: center; align-items: center; overflow: visible;}
-        .troll-btn { background: #ff0000; color: white; border: none; padding: 12px 25px; font-size: clamp(0.9rem, 3vw, 1.2rem); font-weight: bold; border-radius: 8px; cursor: pointer; text-transform: uppercase; box-shadow: 0 0 15px rgba(255,0,0,0.5); transition: transform 0.15s ease-out; position: absolute; z-index: 10;}
-
-    </style>
-</head>
-<body>
-    <div class="background-img"></div>
-    
-    <h1>Đếm Ngược Ferran Torres</h1>
-    <div class="subtitle">Đếm từng giây đến khi hợp đồng kết thúc</div>
-
-    <div class="toggle-container">
-        <button class="toggle-btn active" id="btn-gross">Barca Trả (Gross)</button>
-        <button class="toggle-btn" id="btn-net">Torres Nhận (Net)</button>
-    </div>
-
-    <div class="main-salary-card">
-        <div class="salary-title" id="salary-title">Tổng tiền Barca đã mất</div>
-        <div class="salary-val" id="salary">€ 0.00</div>
-        <div class="salary-vnd" id="salary-vnd">~ 0 VNĐ</div>
-    </div>
-
-    <div class="countdown-container">
-        <div class="time-box"><span class="time-val" id="days">00</span><span class="time-label">Ngày</span></div>
-        <div class="time-box"><span class="time-val" id="hours">00</span><span class="time-label">Giờ</span></div>
-        <div class="time-box"><span class="time-val" id="minutes">00</span><span class="time-label">Phút</span></div>
-        <div class="time-box"><span class="time-val" id="seconds">00</span><span class="time-label">Giây</span></div>
-    </div>
-
-    <div class="breakdown-grid">
-        <div class="breakdown-card"><div class="bd-label">Mỗi Năm</div><div class="bd-val" id="bd-year">€ 0</div></div>
-        <div class="breakdown-card"><div class="bd-label">Mỗi Tháng</div><div class="bd-val" id="bd-month">€ 0</div></div>
-        <div class="breakdown-card"><div class="bd-label">Mỗi Tuần</div><div class="bd-val" id="bd-week">€ 0</div></div>
-        <div class="breakdown-card"><div class="bd-label">Mỗi Ngày</div><div class="bd-val" id="bd-day">€ 0</div></div>
-        <div class="breakdown-card"><div class="bd-label">Mỗi Giờ</div><div class="bd-val" id="bd-hour">€ 0</div></div>
-        <div class="breakdown-card"><div class="bd-label">Mỗi Phút</div><div class="bd-val" id="bd-minute">€ 0</div></div>
-        <div class="breakdown-card" style="grid-column: 1 / -1; background: rgba(0, 255, 136, 0.1); border-color: rgba(0, 255, 136, 0.3);">
-            <div class="bd-label" style="color: var(--neon-green);">Mỗi Giây</div>
-            <div class="bd-val" id="bd-second" style="color: var(--neon-green); font-size: clamp(2.5rem, 8vw, 3rem);">€ 0</div>
-        </div>
-    </div>
-
-    <div class="progress-wrapper">
-        <div class="progress-bar-container"><div class="progress-fill" id="progress-fill"></div></div>
-        <div class="progress-text" id="progress-text">Tiến độ chịu đựng: 0.00000%</div>
-    </div>
-
-    <div class="troll-btn-container">
-        <button class="troll-btn" id="troll-btn">Hủy Hợp Đồng Ngay!</button>
-    </div>
-
-    <script>
-        const endDate = new Date('June 30, 2027 23:59:59').getTime();
-        const startDate = new Date('January 1, 2022 00:00:00').getTime();
-        const contractTotalMs = endDate - startDate;
-        
-        const grossSalary = 10000000; 
-        const netSalary = 4800000;    
-        let currentAnnualSalary = grossSalary;
-        
-        const daysInYear = 365.25;
-        const rateVND = 27500; 
-
-        const btnGross = document.getElementById('btn-gross');
-        const btnNet = document.getElementById('btn-net');
-        const salaryTitle = document.getElementById('salary-title');
-
-        const fmt = (num, decimals = 0) => '€ ' + num.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
-
-        function updateBreakdown() {
-            document.getElementById('bd-year').textContent = fmt(currentAnnualSalary);
-            document.getElementById('bd-month').textContent = fmt(currentAnnualSalary / 12);
-            document.getElementById('bd-week').textContent = fmt(currentAnnualSalary / 52.1429);
-            document.getElementById('bd-day').textContent = fmt(currentAnnualSalary / daysInYear);
-            document.getElementById('bd-hour').textContent = fmt(currentAnnualSalary / (daysInYear * 24));
-            document.getElementById('bd-minute').textContent = fmt(currentAnnualSalary / (daysInYear * 24 * 60), 2);
-            document.getElementById('bd-second').textContent = fmt(currentAnnualSalary / (daysInYear * 24 * 60 * 60), 2);
-        }
-
-        btnGross.addEventListener('click', () => {
-            currentAnnualSalary = grossSalary; btnGross.classList.add('active'); btnNet.classList.remove('active');
-            salaryTitle.textContent = "Tổng tiền Barca đã mất"; updateBreakdown();
-        });
-
-        btnNet.addEventListener('click', () => {
-            currentAnnualSalary = netSalary; btnNet.classList.add('active'); btnGross.classList.remove('active');
-            salaryTitle.textContent = "Tổng tiền Ferran đút túi"; updateBreakdown();
-        });
-
-        updateBreakdown();
-
-        const trollBtn = document.getElementById('troll-btn');
-        trollBtn.addEventListener('mouseover', () => {
-            const maxX = window.innerWidth / 2 - 100;
-            const x = (Math.random() > 0.5 ? 1 : -1) * (Math.random() * maxX * 0.8); 
-            const y = (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 40);   
-            trollBtn.style.transform = `translate(${x}px, ${y}px)`;
-        });
-        trollBtn.addEventListener('click', () => {
-            alert("Lỗi hệ thống: Laporta không cho phép hủy hợp đồng!");
-        });
-
-        function update() {
-            const now = new Date().getTime();
-            const distance = endDate - now;
-            const timeElapsedMs = now - startDate;
-
-            if (distance > 0) {
-                document.getElementById('days').textContent = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
-                document.getElementById('hours').textContent = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-            } else {
-                document.getElementById('days').textContent = "00"; document.getElementById('hours').textContent = "00";
-                document.getElementById('minutes').textContent = "00"; document.getElementById('seconds').textContent = "00";
-            }
-
-            if (timeElapsedMs > 0) {
-                const salaryPerMs = currentAnnualSalary / (daysInYear * 24 * 60 * 60 * 1000);
-                const currentTotalEarned = timeElapsedMs * salaryPerMs;
-                
-                document.getElementById('salary').textContent = fmt(currentTotalEarned, 2);
-                
-                const vndValue = (currentTotalEarned * rateVND).toLocaleString('en-US', {maximumFractionDigits: 0});
-                document.getElementById('salary-vnd').textContent = `~ ${vndValue} VNĐ`;
-
-                let percent = (timeElapsedMs / contractTotalMs) * 100;
-                if (percent > 100) percent = 100;
-                document.getElementById('progress-fill').style.width = percent + '%';
-                document.getElementById('progress-text').textContent = `Tiến độ chịu đựng: ${percent.toFixed(5)}%`;
-            }
-
-            requestAnimationFrame(update);
-        }
-
-        requestAnimationFrame(update);
-    </script>
-</body>
-</html>
+        /* --- BẢNG ĐÓNG KHỐI PHÂN RÃ THÔNG TIN
